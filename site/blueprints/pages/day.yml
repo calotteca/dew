@@ -19,7 +19,7 @@ tabs:
               user:
                 type: users
                 multiple: false
-              useragent:
+              ua:
                 type: text
                 text: false
               ip:
