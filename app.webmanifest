@@ -1,10 +1,10 @@
 {
-  "name": "Wheat",
-  "short_name": "Wheat",
+  "name": "Dew",
+  "short_name": "Dew",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
-  "description": "Calotte's starter-kit to everything.",
+  "description": "Self-hosted baby journal",
   "icons": [
     {
       "src": "manifest-icon-192.maskable.png",

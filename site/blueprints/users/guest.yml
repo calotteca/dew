@@ -1,0 +1,6 @@
+title: Guest
+home: /
+permissions:
+  access:
+    panel: false
+    

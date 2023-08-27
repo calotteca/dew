@@ -1,39 +1,18 @@
 /* FRAMEWORK */
 @import "reset.css";
 @import "theme.css";
-@import "btn.css";
 @import "fonts.css";
 @import "img.css";
 @import "prose.css";
-@import "site-maintenance.css";
-@import "site-search.css";
 @import "spinner.css";
 @import "utils.css";
 
 /* COM */
 @import "indicator.css";
-@import "site-footer.css";
-@import "site-header.css";
-@import "site-menu.css";
-@import "you-tube.css";
+@import "btn.css";
 
-/* PAGES */
+/* VIEW */
 @import "default.css";
 @import "error.css";
+@import "journal.css";
 
-/* BLOCKS */
-@import "_blocks.css";
-@import "_carousel.css";
-@import "_divider.css";
-@import "_feature.css";
-@import "_features.css";
-@import "_heading.css";
-@import "_image.css";
-@import "_loop.css";
-@import "_references.css";
-@import "_text-diptych.css";
-@import "_text.css";
-@import "_youtube.css";
-
-/* MISC */
-@import "fx.css";

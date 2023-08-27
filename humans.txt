@@ -1,5 +1,5 @@
 /* TEAM */
 
-	Developer: Vincent Rouleau
+	Developer & designer: Vincent Rouleau
 	Contact: vincent [at] calotte.ca
 	Site: https://calotte.ca
