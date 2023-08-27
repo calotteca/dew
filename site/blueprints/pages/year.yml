@@ -1,16 +1,11 @@
-title: journal
+title: year
 tabs:
 
   content:
     sections:
-      content:
-        type: fields
-        fields:
-          name:
-            type: text
-      years:
+      months:
         type: pages
-        template: year
+        template: month
 
   advanced:
     sections:

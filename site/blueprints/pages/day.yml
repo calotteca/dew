@@ -1,0 +1,35 @@
+title: day
+tabs:
+
+  content:
+    sections:
+      logs:
+        type: fields
+        fields:
+          logs:
+            type: structure
+            sortBy: start desc
+            fields:
+              start:
+                type: text
+              end: 
+                type: text
+              key: 
+                type: text
+              user:
+                type: users
+                multiple: false
+              useragent:
+                type: text
+                text: false
+              ip:
+                type: text
+                text: false
+
+
+  advanced:
+    sections:
+      pages:
+        type: pages
+      files:
+        type: files
