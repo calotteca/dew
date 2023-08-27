@@ -1,0 +1,12 @@
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-arrow">
+<style xmlns="http://www.w3.org/2000/svg">
+    .svg-arrow path { stroke: #292726; }
+    .svg-arrow circle { fill: #f9ffcc; }
+    @media (prefers-color-scheme: dark) {
+        .svg-arrow path { stroke: #292726; }
+        .svg-arrow circle { fill: #f9ffcc; }
+    }
+</style>
+<circle cx="15" cy="15" r="15" transform="rotate(-90 15 15)"/>
+<path d="M10.1976 13.8024L14.8207 9.17927M14.8207 9.17927L19.4439 13.8024M14.8207 9.17927L14.8207 20.8207"/>
+</svg>

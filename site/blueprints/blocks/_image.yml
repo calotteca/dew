@@ -1,0 +1,9 @@
+name:  image
+icon: image
+label: "{{ anchor }}"
+fields:
+  anchor: 
+    type: slug
+  picture:
+    type: files
+    multiple: false

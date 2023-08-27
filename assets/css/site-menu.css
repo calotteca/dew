@@ -1,0 +1,43 @@
+site-menu {
+	background: var(--c-white);
+	display: none;
+	inset: 0;
+	position: fixed;
+	z-index: 7000;
+}
+
+site-menu[open] {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+
+site-menu header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	max-width: var(--site);
+	margin: 0 auto;
+	padding: var(--gutter);
+	display: flex;
+	justify-content: flex-end;
+}
+
+site-menu nav {
+	width: 100%;
+	display: grid;
+	gap: 1rem;
+	text-align: center;
+}
+
+site-menu a {
+	display: block;
+	width: 100%;
+	font-size: var(--fs-l);
+}
+
+site-menu .ls {
+	color: var(--c-fgl);
+}

@@ -1,0 +1,12 @@
+name:  Loop
+icon: video
+label: "{{ anchor }}"
+fields:
+  anchor: 
+    type: slug
+  video:
+    type: files
+    multiple: false
+  poster:
+    type: files
+    multiple: false

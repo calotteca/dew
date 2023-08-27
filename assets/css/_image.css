@@ -1,0 +1,15 @@
+/* ._image {} */
+
+._image .ctn {
+    max-width: var(--w-m);
+}
+
+
+._image figure {
+    background: var(--c-lightgray);
+}
+
+._image img {
+    width: 100%;
+    height: auto;
+}

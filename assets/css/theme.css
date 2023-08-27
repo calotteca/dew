@@ -1,0 +1,44 @@
+/* COLORS */
+
+:root {
+	--c-bg: white;
+	--c-fg: #313131;
+	--c-white: white;
+	--c-black: #313131;
+	--c-lightgray: #f1f1f1;
+	--c-darkgray: #727272;
+	--c-blue: #2778f1;
+	--c-green: #5acb8e;
+	--c-red: #ff6c4b;
+}
+
+/* SPACINGS */
+
+:root {
+	--rhythm: 8rem;
+	--gap: 2rem;
+	--gutter: 1rem;
+	--site: 1920px;
+	--header: 56px;
+	--w-s: 48rem;
+	--w-m: 64rem;
+	--w-l: 80rem;
+}
+
+/* TEXT */
+
+:root {
+	font-family: "Inter", sans-serif;
+	font-size: 16px;
+
+	--fs-s: 0.8rem;
+	--fs-m: 1rem;
+	--fs-l: 1.5rem;
+	--fs-xl: 2rem;
+	--fs-2xl: 3rem;
+}
+
+::selection {
+	background-color: var(--c-blue);
+	color: var(--c-white);
+}

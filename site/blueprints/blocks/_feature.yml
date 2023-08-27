@@ -1,0 +1,36 @@
+name: Feature
+icon: text
+label: "{{ anchor }}"
+fields:
+  anchor: 
+    type: slug
+  position:
+    type: select
+    default: left
+    width: 1/6
+    options:
+      - left
+      - right
+  picture:
+    type: files
+    multiple: false
+    width: 5/6
+  text:
+    type: textarea
+  links:
+    type: structure
+    fields:
+      style:
+        type: select
+        empty: false
+        default: "btn"
+        width: 1/6
+        options:
+          - btn
+          - link
+      label:
+        type: text
+        width: 5/6
+      url:
+        type: text
+

@@ -1,0 +1,5 @@
+#footer {
+    padding-bottom: var(--gutter);
+    text-align: center;
+    margin-top: var(--rhythm);
+}

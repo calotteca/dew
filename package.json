@@ -1,0 +1,20 @@
+{
+  "name": "wheat",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "postcss assets/css/index.css -o assets/css/app.css",
+    "build:js": "npm run purge:js && uglifyjs-folder assets/js/app -o assets/js/app.js && uglifyjs-folder assets/js/com -o assets/js/com.js && uglifyjs-folder assets/js/head -o assets/js/head.js",
+    "purge:css": "rm assets/css/app.css",
+    "purge:js": "rm assets/js/app.js"
+  },
+  "devDependencies": {
+    "cssnano": "^5.1.13",
+    "postcss": "^8.4.18",
+    "postcss-cli": "^8.3.1",
+    "postcss-import": "^14.0.0",
+    "uglifyjs-folder": "^3.1.3"
+  },
+  "author": "Calotte <vincent@calotte.ca>",
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,9 @@
+/* ._youtube {} */
+
+._youtube .ctn {
+    max-width: var(--w-m);
+}
+
+._youtube you-tube {
+    width: 100%;
+}

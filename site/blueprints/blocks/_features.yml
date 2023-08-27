@@ -1,0 +1,23 @@
+name:  Features
+label: "{{ anchor }}"
+fields:
+  anchor: 
+    type: slug
+  size:
+    type: select
+    default: "icon"
+    options:
+      - icon
+      - picture
+  items:
+    type: structure
+    fields:
+      picture:
+        type: files
+        multiple: false
+      title:
+        type: text
+      text:
+        type: textarea
+        size: small
+        button: false

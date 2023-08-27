@@ -1,0 +1,15 @@
+name:  Youtube
+icon: youtube
+label: "{{ anchor }}"
+fields:
+  anchor: 
+    type: slug
+  youtubeUrl:
+    type: text
+    required: true
+    pattern: ^(https?\:\/\/)?((www\.)?youtube\.com|youtu\.be)\/.+$
+    placeholder: https://www.youtube.com/watch?v=xxxxxxxxxxx
+  poster:
+    type: files
+    multiple: false
+    

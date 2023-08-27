@@ -1,0 +1,14 @@
+.default_hero {
+  margin-top: var(--rhythm);
+}
+
+.default_hero .ctn {
+  max-width: var(--w-s);
+}
+
+.default_hero h1 {
+  text-align: center;
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  line-height: 1.2;
+}

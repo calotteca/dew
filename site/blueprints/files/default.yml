@@ -1,0 +1,13 @@
+title: Default
+sections:
+  content:
+    type: fields
+    fields:
+      alt:
+        type: text
+      credits:
+        type: text
+        help: Credits might not be displayed.
+      caption:
+        type: text
+        help: Caption might not be displayed.

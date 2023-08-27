@@ -1,0 +1,27 @@
+.indicator {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--c-bg);
+	opacity: 0;
+	visibility: hidden;
+	z-index: 9999;
+}
+
+.htmx-request .indicator,
+.htmx-swapping .indicator {
+	transition: all 0.2s 0.5s;
+	visibility: visible;
+	opacity: 0.8;
+}
+
+.indicator .spinner {
+	display: none;
+}
+
+.htmx-request .indicator .spinner,
+.htmx-swapping .indicator .spinner {
+	display: block;
+}

@@ -1,0 +1,21 @@
+/* ._heading {} */
+
+._heading .ctn {
+    text-align: center;
+}
+
+._heading h2 {
+	line-height: 1.2;
+    font-family: var(--ff-serif);
+    font-size: var(--fs-xl);
+    margin: 0 auto;
+    max-width: 32ch;
+}
+
+._heading .links {
+    align-items: center;
+    display: flex;
+    margin-top: 1rem;
+    gap: 0.5rem;
+    justify-content: center;
+}

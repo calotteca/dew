@@ -1,0 +1,5 @@
+title: Client
+home: /
+permissions:
+  access:
+    panel: false

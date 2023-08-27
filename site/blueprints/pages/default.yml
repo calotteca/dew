@@ -1,0 +1,47 @@
+title: Default
+tabs:
+
+  content:
+    sections:
+      content:
+        type: fields
+        fields:
+          headline:
+            type: text
+          blocks:
+            type: blocks
+            fieldsets:
+              - _carousel
+              - _divider
+              - _feature
+              - _features
+              - _heading
+              - _image
+              - _loop
+              - _references
+              - _text
+              - _youtube
+              - _text-diptych
+
+  metas:
+    sections:
+      metas:
+        type: fields
+        fields:
+          shareTitle:
+            type: text
+          shareDescription:
+            type: text
+          shareImage:
+            type: files
+            multiple: false
+          likes:
+            type: number
+            disabled: true
+
+  advanced:
+    sections:
+      pages:
+        type: pages
+      files:
+        type: files

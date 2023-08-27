@@ -1,0 +1,13 @@
+name: Text Diptych
+icon: text
+label: "{{ anchor }}"
+fields:
+  anchor: 
+    type: slug
+  text01:
+    type: textarea
+    width: 1/2
+  text02:
+    type: textarea
+    width: 1/2
+    

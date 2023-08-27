@@ -1,0 +1,54 @@
+/* @media (prefers-reduced-motion: no-preference) {
+
+    @keyframes fx-fadein {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    [in] [fx^="fadein"] {
+		opacity: 0;
+        transform: translateY(1rem);
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+	}
+
+    [in="1"] [fx^="fadein"] {
+        animation-name: fx-fadein;
+        animation-delay: 0s;
+        animation-timing-function: cubic-bezier(.215,.61,.355,1);
+    }
+
+    @keyframes fx-trace {
+        to {
+            width: 100%;
+        }
+    }
+
+    [in] [fx^="trace"] {
+		width: 0%;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+	}
+
+    [in="1"] [fx^="trace"] {
+        animation-name: fx-trace;
+        animation-delay: 0s;
+        animation-timing-function: cubic-bezier(.215,.61,.355,1);
+    }
+
+    [in="1"] [fx$=" 1"] { animation-delay: .1s; }
+    [in="1"] [fx$=" 2"] { animation-delay: .2s; }
+    [in="1"] [fx$=" 3"] { animation-delay: .3s; }
+    [in="1"] [fx$=" 4"] { animation-delay: .4s; }
+    [in="1"] [fx$=" 5"] { animation-delay: .5s; }
+    [in="1"] [fx$=" 6"] { animation-delay: .6s; }
+    [in="1"] [fx$=" 7"] { animation-delay: .7s; }
+    [in="1"] [fx$=" 8"] { animation-delay: .8s; }
+    [in="1"] [fx$=" 9"] { animation-delay: .9s; }
+    [in="1"] [fx$=" 10"] { animation-delay: 1s; }
+    [in="1"] [fx$=" 11"] { animation-delay: 1.1s; }
+    [in="1"] [fx$=" 12"] { animation-delay: 1.2s; }
+
+} */

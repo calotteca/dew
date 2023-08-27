@@ -1,0 +1,85 @@
+.prose {
+	font-size: var(--fs-m);
+	line-height: 1.5;
+}
+
+.prose p {
+	color: var(--c-darkgray);
+}
+
+.prose h1 {
+	font-size: var(--fs-2xl);
+	line-height: 1.2;
+	font-weight: 500;
+}
+
+.prose h2 {
+	font-size: var(--fs-xl);
+	line-height: 1.2;
+	font-weight: 500;
+}
+
+.prose h3,
+.h3,
+.prose h3,
+.h4,
+.prose h3,
+.h5,
+.prose h3,
+.h6 {
+	font-size: var(--fs-l);
+	line-height: 1.2;
+	font-weight: 500;
+
+}
+
+
+
+.prose * + blockquote,
+.prose * + h4,
+.prose * + h5,
+.prose * + h6,
+.prose * + hr,
+.prose * + ol,
+.prose * + ul,
+.prose > * + details {
+	margin-top: 2rem;
+}
+
+.prose * + p {
+	margin-top: 1rem;
+}
+
+.prose ul,
+.prose ol {
+	padding-left: 1rem;
+}
+
+.prose ul > li {
+	list-style: disc;
+}
+
+.prose ol > li {
+	list-style: decimal;
+}
+
+.prose blockquote {
+	font-size: 2em;
+	line-height: 1.5;
+	border-left: 2px solid black;
+	padding-left: 1rem;
+	margin: 3rem 0;
+	max-width: 25rem;
+}
+
+.prose a {
+	text-decoration: underline;
+}
+
+.prose :first-child {
+	margin-top: 0;
+}
+
+.prose :last-child {
+	margin-bottom: 0;
+}

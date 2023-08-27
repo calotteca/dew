@@ -1,0 +1,35 @@
+/* ._feature {} */
+
+._feature .ctn {
+    display: grid;
+    gap: var(--gap);
+
+}
+
+@media (min-width: 1024px) {
+    ._feature .ctn {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    ._feature .media.right {
+        order: 1;
+    }
+}
+
+._feature .media img {
+    width: 100%;
+    height: auto;
+}
+
+._feature .prose {
+    display: flex;
+    flex-direction: column;
+}
+
+._feature .links {
+    gap: var(--gap);
+    display: flex;
+    align-items: center;
+}

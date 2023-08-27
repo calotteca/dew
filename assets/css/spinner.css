@@ -1,0 +1,28 @@
+.spinner {
+	--spinner-color: black;
+	animation-duration: 1.1s;
+	animation-iteration-count: infinite;
+	animation-name: spinner;
+    box-sizing: border-box;
+	animation-timing-function: linear;
+	border-bottom: 0.2rem solid var(--spinner-color);
+	border-left: 0.2rem solid transparent;
+	border-radius: 100%;
+	border-right: 0.2rem solid var(--spinner-color);
+	border-top: 0.2rem solid var(--spinner-color);
+	box-sizing: border-box;
+	content: "";
+	height: 1.5rem;
+	transform: translateZ(0);
+	width: 1.5rem;
+	z-index: 1;
+}
+
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

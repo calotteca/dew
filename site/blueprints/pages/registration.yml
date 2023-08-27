@@ -1,0 +1,29 @@
+title: Registration
+tabs:
+
+  content:
+    # sections:
+    #   content:
+    #     type: fields
+    #     fields:
+
+  seo:
+    sections:
+      seo:
+        type: fields
+        fields:
+          seoTitle:
+            type: text
+          seoDescription:
+            type: text
+          seoImage:
+            type: files
+            multiple: false
+
+  advanced:
+    sections:
+      pages:
+        type: pages
+      files:
+        type: files
+

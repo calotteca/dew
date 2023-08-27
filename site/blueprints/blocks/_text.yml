@@ -1,0 +1,16 @@
+name: Text
+icon: text
+label: "{{ anchor }}"
+fields:
+  anchor: 
+    type: slug
+  text:
+    type: textarea
+  links:
+    type: structure
+    fields:
+      label:
+        type: text
+        width: 5/6
+      url:
+        type: text

@@ -1,0 +1,19 @@
+name: References
+icon: text
+label: "{{ anchor }}"
+fields:
+  anchor: 
+    type: slug
+  text:
+    type: textarea
+  items:
+    type: structure
+    fields:
+      title:
+        type: text
+        required: true
+      subtext:
+        type: writer
+      url:
+        type: url
+        required: true

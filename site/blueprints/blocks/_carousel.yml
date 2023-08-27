@@ -1,0 +1,17 @@
+name:  Carousel
+label: "{{ anchor }}"
+fields:
+  anchor: 
+    type: slug
+  items:
+    type: structure
+    fields:
+      picture:
+        type: files
+        multiple: false
+      title:
+        type: text
+      text:
+        type: textarea
+        size: small
+        button: false

@@ -1,0 +1,5 @@
+section:where([class^="_"]) {
+    margin-top: var(--rhythm);
+    display: block;
+    position: relative;
+}
