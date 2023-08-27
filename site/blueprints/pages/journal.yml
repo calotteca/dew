@@ -8,6 +8,10 @@ tabs:
         fields:
           name:
             type: text
+          owner:
+            type: users
+          contributors:
+            type: users
       years:
         type: pages
         template: year
