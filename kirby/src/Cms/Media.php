@@ -3,6 +3,8 @@
 namespace Kirby\Cms;
 
 use Kirby\Data\Data;
+use Kirby\Exception\InvalidArgumentException;
+use Kirby\Exception\NotFoundException;
 use Kirby\Filesystem\Dir;
 use Kirby\Filesystem\F;
 use Kirby\Toolkit\Str;
@@ -23,14 +25,12 @@ class Media
 	/**
 	 * Tries to find a file by model and filename
 	 * and to copy it to the media folder.
-	 *
-	 * @param \Kirby\Cms\Model|null $model
-	 * @param string $hash
-	 * @param string $filename
-	 * @return \Kirby\Cms\Response|false
 	 */
-	public static function link(Model $model = null, string $hash, string $filename)
-	{
+	public static function link(
+		Page|Site|User $model = null,
+		string $hash,
+		string $filename
+	): Response|false {
 		if ($model === null) {
 			return false;
 		}
@@ -87,14 +87,12 @@ class Media
 	 * Tries to find a job file for the
 	 * given filename and then calls the thumb
 	 * component to create a thumbnail accordingly
-	 *
-	 * @param \Kirby\Cms\Model|string $model
-	 * @param string $hash
-	 * @param string $filename
-	 * @return \Kirby\Cms\Response|false
 	 */
-	public static function thumb($model, string $hash, string $filename)
-	{
+	public static function thumb(
+		File|Page|Site|User|string $model,
+		string $hash,
+		string $filename
+	): Response|false {
 		$kirby = App::instance();
 
 		$root = match (true) {
@@ -109,15 +107,23 @@ class Media
 			=> $model->mediaRoot() . '/' . $hash
 		};
 
+		$thumb = $root . '/' . $filename;
+		$job   = $root . '/.jobs/' . $filename . '.json';
+
 		try {
-			$thumb   = $root . '/' . $filename;
-			$job     = $root . '/.jobs/' . $filename . '.json';
 			$options = Data::read($job);
+		} catch (Throwable) {
+			// send a customized error message to make clearer what happened here
+			throw new NotFoundException('The thumbnail configuration could not be found');
+		}
 
-			if (empty($options) === true) {
-				return false;
-			}
+		if (empty($options['filename']) === true) {
+			throw new InvalidArgumentException('Incomplete thumbnail configuration');
+		}
 
+		try {
+			// find the correct source file depending on the model
+			// this adds support for custom assets
 			$source = match (true) {
 				is_string($model) === true
 					=> $kirby->root('index') . '/' . $model . '/' . $options['filename'],
@@ -125,16 +131,18 @@ class Media
 				=> $model->file($options['filename'])->root()
 			};
 
-			try {
-				$kirby->thumb($source, $thumb, $options);
-				F::remove($job);
-				return Response::file($thumb);
-			} catch (Throwable) {
-				F::remove($thumb);
-				return Response::file($source);
-			}
-		} catch (Throwable) {
-			return false;
+			// generate the thumbnail and save it in the media folder
+			$kirby->thumb($source, $thumb, $options);
+
+			// remove the job file once the thumbnail has been created
+			F::remove($job);
+
+			// read the file and send it to the browser
+			return Response::file($thumb);
+		} catch (Throwable $e) {
+			// remove potentially broken thumbnails
+			F::remove($thumb);
+			throw $e;
 		}
 	}
 

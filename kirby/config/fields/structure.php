@@ -1,8 +1,11 @@
 <?php
 
 use Kirby\Data\Data;
+use Kirby\Exception\InvalidArgumentException;
 use Kirby\Form\Form;
+use Kirby\Toolkit\A;
 use Kirby\Toolkit\I18n;
+use Kirby\Toolkit\Str;
 
 return [
 	'mixins' => ['min'],
@@ -49,7 +52,7 @@ return [
 		/**
 		 * Fields setup for the structure form. Works just like fields in regular forms.
 		 */
-		'fields' => function (array $fields) {
+		'fields' => function (array $fields = []) {
 			return $fields;
 		},
 		/**
@@ -99,7 +102,7 @@ return [
 		},
 		'fields' => function () {
 			if (empty($this->fields) === true) {
-				throw new Exception('Please provide some fields for the structure');
+				return [];
 			}
 
 			return $this->form()->fields()->toArray();
@@ -112,7 +115,11 @@ return [
 				foreach ($this->fields as $field) {
 					// Skip hidden and unsaveable fields
 					// They should never be included as column
-					if ($field['type'] === 'hidden' || $field['saveable'] === false) {
+					if (
+						$field['type'] === 'hidden' ||
+						$field['hidden'] === true ||
+						$field['saveable'] === false
+					) {
 						continue;
 					}
 
@@ -179,17 +186,6 @@ return [
 			]);
 		},
 	],
-	'api' => function () {
-		return [
-			[
-				'pattern' => 'validate',
-				'method'  => 'ALL',
-				'action'  => function () {
-					return array_values($this->field()->form($this->requestBody())->errors());
-				}
-			]
-		];
-	},
 	'save' => function ($value) {
 		$data = [];
 
@@ -201,6 +197,31 @@ return [
 	},
 	'validations' => [
 		'min',
-		'max'
+		'max',
+		'structure' => function ($value) {
+			if (empty($value) === true) {
+				return true;
+			}
+
+			$values = A::wrap($value);
+
+			foreach ($values as $index => $value) {
+				$form = $this->form($value);
+
+				foreach ($form->fields() as $field) {
+					$errors = $field->errors();
+
+					if (empty($errors) === false) {
+						throw new InvalidArgumentException([
+							'key'  => 'structure.validation',
+							'data' => [
+								'field' => $field->label() ?? Str::ucfirst($field->name()),
+								'index' => $index + 1
+							]
+						]);
+					}
+				}
+			}
+		}
 	]
 ];

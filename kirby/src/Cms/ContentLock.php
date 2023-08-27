@@ -2,9 +2,9 @@
 
 namespace Kirby\Cms;
 
+use Kirby\Exception\AuthException;
 use Kirby\Exception\DuplicateException;
 use Kirby\Exception\LogicException;
-use Kirby\Exception\PermissionException;
 
 /**
  * Takes care of content lock and unlock information
@@ -199,7 +199,7 @@ class ContentLock
 	 * Returns the state for the
 	 * form buttons in the frontend
 	 */
-	public function state(): ?string
+	public function state(): string|null
 	{
 		return match (true) {
 			$this->isUnlocked() => 'unlock',
@@ -251,6 +251,6 @@ class ContentLock
 	protected function user(): User
 	{
 		return $this->kirby()->user() ??
-			throw new PermissionException('No user authenticated.');
+			throw new AuthException('No user authenticated.');
 	}
 }

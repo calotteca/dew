@@ -2,7 +2,9 @@
 
 namespace Kirby\Cms;
 
+use Closure;
 use Exception;
+use Kirby\Content\Field;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Exception\NotFoundException;
 use Kirby\Filesystem\Dir;
@@ -32,70 +34,58 @@ class User extends ModelWithContent
 	public const CLASS_ALIAS = 'user';
 
 	/**
-	 * @var UserBlueprint
-	 */
-	protected $blueprint;
-
-	/**
-	 * @var array
-	 */
-	protected $credentials;
-
-	/**
-	 * @var string
-	 */
-	protected $email;
-
-	/**
-	 * @var string
-	 */
-	protected $hash;
-
-	/**
-	 * @var string
-	 */
-	protected $id;
-
-	/**
-	 * @var array|null
-	 */
-	protected $inventory;
-
-	/**
-	 * @var string
-	 */
-	protected $language;
-
-	/**
 	 * All registered user methods
-	 *
-	 * @var array
 	 */
-	public static $methods = [];
+	public static array $methods = [];
 
 	/**
 	 * Registry with all User models
-	 *
-	 * @var array
 	 */
-	public static $models = [];
+	public static array $models = [];
+
+	protected UserBlueprint|null $blueprint = null;
+	protected array $credentials;
+	protected string|null $email;
+	protected string $hash;
+	protected string $id;
+	protected array|null $inventory = null;
+	protected string|null $language;
+	protected Field|string|null $name;
+	protected string|null $password;
+	protected Role|string|null $role;
 
 	/**
-	 * @var \Kirby\Cms\Field
+	 * Creates a new User object
 	 */
-	protected $name;
+	public function __construct(array $props)
+	{
+		// helper function to easily edit values (if not null)
+		// before assigning them to their properties
+		$set = function (string $key, Closure $callback) use ($props) {
+			if ($value = $props[$key] ?? null) {
+				$value = $callback($value);
+			}
 
-	/**
-	 * @var string
-	 */
-	protected $password;
+			return $value;
+		};
 
-	/**
-	 * The user role
-	 *
-	 * @var string
-	 */
-	protected $role;
+		// if no ID passed, generate one;
+		// do so before calling parent constructor
+		// so it also gets stored in propertyData prop
+		$props['id'] ??= $this->createId();
+
+		parent::__construct($props);
+
+		$this->id       = $props['id'];
+		$this->email    = $set('email', fn ($email) => Str::lower(trim($email)));
+		$this->language = $set('language', fn ($language) => trim($language));
+		$this->name     = $set('name', fn ($name) => trim(strip_tags($name)));
+		$this->password = $props['password'] ?? null;
+		$this->role     = $set('role', fn ($role) => Str::lower(trim($role)));
+
+		$this->setBlueprint($props['blueprint'] ?? null);
+		$this->setFiles($props['files'] ?? null);
+	}
 
 	/**
 	 * Modified getter to also return fields
@@ -122,19 +112,8 @@ class User extends ModelWithContent
 	}
 
 	/**
-	 * Creates a new User object
-	 *
-	 * @param array $props
-	 */
-	public function __construct(array $props)
-	{
-		// TODO: refactor later to avoid redundant prop setting
-		$this->setProperty('id', $props['id'] ?? $this->createId(), true);
-		$this->setProperties($props);
-	}
-
-	/**
 	 * Improved `var_dump` output
+	 * @codeCoverageIgnore
 	 *
 	 * @return array
 	 */
@@ -175,19 +154,13 @@ class User extends ModelWithContent
 
 	/**
 	 * Returns the UserBlueprint object
-	 *
-	 * @return \Kirby\Cms\Blueprint
 	 */
-	public function blueprint()
+	public function blueprint(): UserBlueprint
 	{
-		if ($this->blueprint instanceof Blueprint) {
-			return $this->blueprint;
-		}
-
 		try {
-			return $this->blueprint = UserBlueprint::factory('users/' . $this->role(), 'users/default', $this);
+			return $this->blueprint ??= UserBlueprint::factory('users/' . $this->role(), 'users/default', $this);
 		} catch (Exception) {
-			return $this->blueprint = new UserBlueprint([
+			return $this->blueprint ??= new UserBlueprint([
 				'model' => $this,
 				'name'  => 'default',
 				'title' => 'Default',
@@ -221,10 +194,13 @@ class User extends ModelWithContent
 	 * Filename for the content file
 	 *
 	 * @internal
-	 * @return string
+	 * @deprecated 4.0.0
+	 * @todo Remove in v5
+	 * @codeCoverageIgnore
 	 */
 	public function contentFileName(): string
 	{
+		Helpers::deprecated('The internal $model->contentFileName() method has been deprecated. Please let us know via a GitHub issue if you need this method and tell us your use case.', 'model-content-file');
 		return 'user';
 	}
 
@@ -250,7 +226,10 @@ class User extends ModelWithContent
 	 */
 	public function exists(): bool
 	{
-		return is_file($this->contentFile('default')) === true;
+		return $this->storage()->exists(
+			'published',
+			'default'
+		);
 	}
 
 	/**
@@ -441,6 +420,9 @@ class User extends ModelWithContent
 
 		$session->regenerateToken(); // privilege change
 		$session->data()->set('kirby.userId', $this->id());
+		if ($this->passwordTimestamp() !== null) {
+			$session->data()->set('kirby.loginTimestamp', time());
+		}
 		$this->kirby()->auth()->setUser($this);
 
 		$kirby->trigger('user.login:after', ['user' => $this, 'session' => $session]);
@@ -461,6 +443,7 @@ class User extends ModelWithContent
 
 		// remove the user from the session for future requests
 		$session->data()->remove('kirby.userId');
+		$session->data()->remove('kirby.loginTimestamp');
 
 		// clear the cached user object from the app state of the current request
 		$this->kirby()->auth()->flush();
@@ -531,7 +514,7 @@ class User extends ModelWithContent
 	 */
 	public function modified(string $format = 'U', string $handler = null, string $languageCode = null)
 	{
-		$modifiedContent = F::modified($this->contentFile($languageCode));
+		$modifiedContent = $this->storage()->modified('published', $languageCode);
 		$modifiedIndex   = F::modified($this->root() . '/index.php');
 		$modifiedTotal   = max([$modifiedContent, $modifiedIndex]);
 		$handler       ??= $this->kirby()->option('date.handler', 'date');
@@ -541,27 +524,21 @@ class User extends ModelWithContent
 
 	/**
 	 * Returns the user's name
-	 *
-	 * @return \Kirby\Cms\Field
 	 */
-	public function name()
+	public function name(): Field
 	{
 		if (is_string($this->name) === true) {
 			return new Field($this, 'name', $this->name);
 		}
 
-		if ($this->name !== null) {
-			return $this->name;
-		}
-
-		return $this->name = new Field($this, 'name', $this->credentials()['name'] ?? null);
+		return $this->name ??= new Field($this, 'name', $this->credentials()['name'] ?? null);
 	}
 
 	/**
 	 * Returns the user's name or,
 	 * if empty, the email address
 	 *
-	 * @return \Kirby\Cms\Field
+	 * @return \Kirby\Content\Field
 	 */
 	public function nameOrEmail()
 	{
@@ -585,42 +562,49 @@ class User extends ModelWithContent
 
 	/**
 	 * Returns the panel info object
-	 *
-	 * @return \Kirby\Panel\User
 	 */
-	public function panel()
+	public function panel(): Panel
 	{
 		return new Panel($this);
 	}
 
 	/**
 	 * Returns the encrypted user password
-	 *
-	 * @return string|null
 	 */
 	public function password(): string|null
 	{
-		if ($this->password !== null) {
-			return $this->password;
-		}
-
-		return $this->password = $this->readPassword();
+		return $this->password ??= $this->readPassword();
 	}
 
 	/**
-	 * @return \Kirby\Cms\UserPermissions
+	 * Returns the timestamp when the password
+	 * was last changed
 	 */
-	public function permissions()
+	public function passwordTimestamp(): int|null
+	{
+		$file = $this->passwordFile();
+
+		// ensure we have the latest information
+		// to prevent cache attacks
+		clearstatcache();
+
+		// user does not have a password
+		if (is_file($file) === false) {
+			return null;
+		}
+
+		return filemtime($file);
+	}
+
+	public function permissions(): UserPermissions
 	{
 		return new UserPermissions($this);
 	}
 
 	/**
 	 * Returns the user role
-	 *
-	 * @return \Kirby\Cms\Role
 	 */
-	public function role()
+	public function role(): Role
 	{
 		if ($this->role instanceof Role) {
 			return $this->role;
@@ -665,8 +649,6 @@ class User extends ModelWithContent
 
 	/**
 	 * The absolute path to the user directory
-	 *
-	 * @return string
 	 */
 	public function root(): string
 	{
@@ -676,10 +658,8 @@ class User extends ModelWithContent
 	/**
 	 * Returns the UserRules class to
 	 * validate any important action.
-	 *
-	 * @return \Kirby\Cms\UserRules
 	 */
-	protected function rules()
+	protected function rules(): UserRules
 	{
 		return new UserRules();
 	}
@@ -687,91 +667,15 @@ class User extends ModelWithContent
 	/**
 	 * Sets the Blueprint object
 	 *
-	 * @param array|null $blueprint
 	 * @return $this
 	 */
-	protected function setBlueprint(array $blueprint = null)
+	protected function setBlueprint(array $blueprint = null): static
 	{
 		if ($blueprint !== null) {
 			$blueprint['model'] = $this;
 			$this->blueprint = new UserBlueprint($blueprint);
 		}
 
-		return $this;
-	}
-
-	/**
-	 * Sets the user email
-	 *
-	 * @param string $email|null
-	 * @return $this
-	 */
-	protected function setEmail(string $email = null)
-	{
-		if ($email !== null) {
-			$this->email = Str::lower(trim($email));
-		}
-		return $this;
-	}
-
-	/**
-	 * Sets the user id
-	 *
-	 * @param string $id|null
-	 * @return $this
-	 */
-	protected function setId(string $id = null)
-	{
-		$this->id = $id;
-		return $this;
-	}
-
-	/**
-	 * Sets the user language
-	 *
-	 * @param string $language|null
-	 * @return $this
-	 */
-	protected function setLanguage(string $language = null)
-	{
-		$this->language = $language !== null ? trim($language) : null;
-		return $this;
-	}
-
-	/**
-	 * Sets the user name
-	 *
-	 * @param string $name|null
-	 * @return $this
-	 */
-	protected function setName(string $name = null)
-	{
-		$this->name = $name !== null ? trim(strip_tags($name)) : null;
-		return $this;
-	}
-
-	/**
-	 * Sets the user's password hash
-	 *
-	 * @return $this
-	 */
-	protected function setPassword(
-		#[SensitiveParameter]
-		string $password = null
-	): static {
-		$this->password = $password;
-		return $this;
-	}
-
-	/**
-	 * Sets the user role
-	 *
-	 * @param string $role|null
-	 * @return $this
-	 */
-	protected function setRole(string $role = null)
-	{
-		$this->role = $role !== null ? Str::lower(trim($role)) : null;
 		return $this;
 	}
 
@@ -795,10 +699,8 @@ class User extends ModelWithContent
 
 	/**
 	 * Returns the parent Users collection
-	 *
-	 * @return \Kirby\Cms\Users
 	 */
-	protected function siblingsCollection()
+	protected function siblingsCollection(): Users
 	{
 		return $this->kirby()->users();
 	}
@@ -806,33 +708,31 @@ class User extends ModelWithContent
 	/**
 	 * Converts the most important user properties
 	 * to an array
-	 *
-	 * @return array
 	 */
 	public function toArray(): array
 	{
-		return [
-			'avatar'   => $this->avatar() ? $this->avatar()->toArray() : null,
-			'content'  => $this->content()->toArray(),
+		return array_merge(parent::toArray(), [
+			'avatar'   => $this->avatar()?->toArray(),
 			'email'    => $this->email(),
 			'id'       => $this->id(),
 			'language' => $this->language(),
 			'role'     => $this->role()->name(),
 			'username' => $this->username()
-		];
+		]);
 	}
 
 	/**
 	 * String template builder
 	 *
-	 * @param string|null $template
-	 * @param array|null $data
 	 * @param string|null $fallback Fallback for tokens in the template that cannot be replaced
 	 *                              (`null` to keep the original token)
-	 * @return string
 	 */
-	public function toString(string $template = null, array $data = [], string|null $fallback = '', string $handler = 'template'): string
-	{
+	public function toString(
+		string $template = null,
+		array $data = [],
+		string|null $fallback = '',
+		string $handler = 'template'
+	): string {
 		$template ??= $this->email();
 		return parent::toString($template, $data, $fallback, $handler);
 	}
@@ -841,8 +741,6 @@ class User extends ModelWithContent
 	 * Returns the username
 	 * which is the given name or the email
 	 * as a fallback
-	 *
-	 * @return string|null
 	 */
 	public function username(): string|null
 	{
@@ -864,8 +762,15 @@ class User extends ModelWithContent
 			throw new NotFoundException(['key' => 'user.password.undefined']);
 		}
 
+		// `UserRules` enforces a minimum length of 8 characters,
+		// so everything below that is a typo
 		if (Str::length($password) < 8) {
 			throw new InvalidArgumentException(['key' => 'user.password.invalid']);
+		}
+
+		// too long passwords can cause DoS attacks
+		if (Str::length($password) > 1000) {
+			throw new InvalidArgumentException(['key' => 'user.password.excessive']);
 		}
 
 		if (password_verify($password, $this->password()) !== true) {
@@ -873,5 +778,13 @@ class User extends ModelWithContent
 		}
 
 		return true;
+	}
+
+	/**
+	 * Returns the path to the password file
+	 */
+	protected function passwordFile(): string
+	{
+		return $this->root() . '/.htpasswd';
 	}
 }

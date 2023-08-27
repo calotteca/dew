@@ -1,15 +1,13 @@
 /* COLORS */
 
 :root {
-	--c-bg: white;
-	--c-fg: #313131;
-	--c-white: white;
-	--c-black: #313131;
-	--c-lightgray: #f1f1f1;
-	--c-darkgray: #727272;
-	--c-blue: #2778f1;
-	--c-green: #5acb8e;
-	--c-red: #ff6c4b;
+	--gray-100: #F4F3F0;
+	--gray-150: #EDEDED;
+	--gray-200: #8C8C8C;
+	--gray-300: #464646;
+	--gray-400: #262626;
+	--back: black;
+	--white: white;
 }
 
 /* SPACINGS */
@@ -38,7 +36,8 @@
 	--fs-2xl: 3rem;
 }
 
+/* 
 ::selection {
 	background-color: var(--c-blue);
 	color: var(--c-white);
-}
+} */
