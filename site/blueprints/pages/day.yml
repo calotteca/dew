@@ -1,4 +1,4 @@
-title: day
+title: Day
 tabs:
 
   content:
@@ -11,9 +11,13 @@ tabs:
             sortBy: start desc
             fields:
               start:
-                type: text
+                type: date
+                time: true
+                width: 1/2
               end: 
-                type: text
+                type: date
+                time: true
+                width: 1/2
               key: 
                 type: text
               user:
@@ -25,7 +29,6 @@ tabs:
               ip:
                 type: text
                 text: false
-
 
   advanced:
     sections:

@@ -1,11 +1,11 @@
-title: Month
+title: Home
 tabs:
 
   content:
     sections:
-      days:
-        type: pages
-        template: day
+      content:
+        type: fields
+        fields:
 
   advanced:
     sections:
