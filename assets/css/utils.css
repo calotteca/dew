@@ -5,3 +5,18 @@
     padding: 0 var(--gutter);
     max-width: var(--site);
 }
+
+.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+a {
+    outline: 0px solid khaki;
+    transition: outline 0.2s;
+}
+
+a:not(.disabled):hover,
+a:not(.disabled):focus-visible {
+    outline: 4px solid khaki;
+}

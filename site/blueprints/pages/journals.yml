@@ -1,4 +1,4 @@
-title: Journal
+title: Journals
 tabs:
 
   content:
@@ -6,13 +6,6 @@ tabs:
       content:
         type: fields
         fields:
-          owner:
-            type: users
-          contributors:
-            type: users
-      activities:
-        type: pages
-        template: activity
 
   advanced:
     sections:

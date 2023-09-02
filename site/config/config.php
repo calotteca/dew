@@ -53,27 +53,10 @@ return [
     ],
     'routes' => [
         [
-            'pattern' => 'sitemap.xml',
-            'language' => '*',
-            'action' => function () {
+            'pattern' => 'start',
+            'action'  => function() {
                 $kirby = kirby();
-                $content = snippet('sitemap', compact('kirby'), true);
-                return new Kirby\Cms\Response($content, 'application/xml');
-            }            
-        ],
-        [
-            'pattern' => 'sitemap',
-            'language' => '*',
-            'action'  => function() {
-                return go('sitemap.xml', 301);
-            }
-        ],
-        [
-            'pattern' => 'search',
-            'language' => '*',
-            'action'  => function() {
-                $site = site();
-                $content = snippet('site-search-results', compact('site'), true);
+                $content = snippet('start', compact('kirby'), true);
                 return new Kirby\Cms\Response($content, 'text/html');
             }
         ],
@@ -83,15 +66,6 @@ return [
             'action'  => function() {
                 $kirby = kirby();
                 $content = snippet('logout', compact('kirby'), true);
-                return new Kirby\Cms\Response($content, 'text/html');
-            }
-        ],
-        [
-            'pattern' => 'like',
-            'language' => '*',
-            'action'  => function() {
-                $kirby = kirby();
-                $content = snippet('like', compact('kirby'), true);
                 return new Kirby\Cms\Response($content, 'text/html');
             }
         ]

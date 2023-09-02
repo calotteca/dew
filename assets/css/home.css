@@ -1,0 +1,37 @@
+#view.home {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100svh;
+    justify-content: center;
+    margin: 0 0.5rem;
+    width: 100%;
+}
+
+/* .home_journals {} */
+
+.home_journals h1 {
+    font-size: xx-large;
+}
+
+.home_journals ul {
+    display: flex;
+    width: 30rem;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+
+.home_journals a {
+    width: 100%;
+    display: block;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.home_journals .journal {
+    border: 2px solid black;
+}
+
+.home_journals .create-new {
+    border: 2px dashed black;
+}
