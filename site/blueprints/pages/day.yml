@@ -3,10 +3,12 @@ tabs:
 
   content:
     sections:
-      logs:
+      activities:
         type: fields
         fields:
-          logs:
+          date:
+            type: date
+          activities:
             type: structure
             sortBy: start desc
             fields:

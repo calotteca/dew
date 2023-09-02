@@ -12,9 +12,9 @@ tabs:
             type: users
           contributors:
             type: users
-      years:
+      items:
         type: pages
-        template: year
+        template: day
 
   advanced:
     sections:

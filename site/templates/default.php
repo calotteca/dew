@@ -1,8 +1,13 @@
+<?php 
+$user = $kirby->user();
+$journals = $site->index()->filter('owner', $user->uuid()->toString());
+?>
+
 <?php snippet('document', slots: true) ?>
 <?php slot() ?>
-    <?= snippet('default-hero') ?>
-    <?php foreach ($page->blocks()->toBlocks() as $block): ?>
-    <?php snippet('blocks/' . $block->type(), ['block'=>$block]) ?>
-    <?php endforeach ?>
+    <?= $journals->count() ?>
+<?php foreach ($journals as $journal) : ?>
+    <?= $journal->title() ?>
+<?php endforeach ?>
 <?php endslot() ?>
 <?php endsnippet() ?>
