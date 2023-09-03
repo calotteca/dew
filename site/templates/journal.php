@@ -4,10 +4,9 @@
 
 <?php snippet('document', slots: true) ?>
 <?php slot() ?>
+<section>
     <h1><?= $page->title() ?></h1>
-
-    <button hx-post="/start?q=<?= base64_encode($page->uuid()) ?>">Start Activity</button>
-
+    <button hx-get="/<?= $kirby->languageCode() ?? 'en' ?>/start?q=<?= base64_encode($page->uuid()) ?>">Start Activity</button>
     <ul>
         <?php foreach ($activities as $activity) : ?>
         <li>
@@ -15,5 +14,6 @@
         </li> 
         <?php endforeach ?>
     </ul>
+</section>
 <?php endslot() ?>
 <?php endsnippet() ?>

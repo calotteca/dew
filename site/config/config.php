@@ -54,6 +54,7 @@ return [
     'routes' => [
         [
             'pattern' => 'start',
+            'language' => '*',
             'action'  => function() {
                 $kirby = kirby();
                 $content = snippet('start', compact('kirby'), true);

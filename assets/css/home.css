@@ -23,14 +23,9 @@
 
 .home_journals a {
     width: 100%;
-    display: block;
-    padding: 1rem;
-    border-radius: 0.5rem;
 }
 
-.home_journals .journal {
-    border: 2px solid black;
-}
+/* .home_journals .journal {} */
 
 .home_journals .create-new {
     border: 2px dashed black;

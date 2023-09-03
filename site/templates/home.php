@@ -8,7 +8,7 @@ $journals = $site->index()->filter(function($a) use($user) {
 <?php snippet('document', slots: true) ?>
 <?php slot() ?>
 
-<section class="home_journals">
+<section>
     <h1>Journals</h1>
     <ul>
         <?php foreach ($journals as $journal) : ?>
@@ -19,7 +19,7 @@ $journals = $site->index()->filter(function($a) use($user) {
         </li>
         <?php endforeach ?>
         <li>
-            <a class="create-new disabled">
+            <a class="disabled">
                 Create new
             </a>
         </li>
