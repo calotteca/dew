@@ -10,6 +10,7 @@
 /* COM */
 @import "indicator.css";
 @import "btn.css";
+@import "queue.css";
 
 /* VIEW */
 @import "default.css";

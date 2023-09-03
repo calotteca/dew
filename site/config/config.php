@@ -57,7 +57,16 @@ return [
             'language' => '*',
             'action'  => function() {
                 $kirby = kirby();
-                $content = snippet('start', compact('kirby'), true);
+                $content = snippet('api/start', compact('kirby'), true);
+                return new Kirby\Cms\Response($content, 'text/html');
+            }
+        ],
+        [
+            'pattern' => 'queue',
+            'language' => '*',
+            'action'  => function() {
+                $kirby = kirby();
+                $content = snippet('api/queue', compact('kirby'), true);
                 return new Kirby\Cms\Response($content, 'text/html');
             }
         ],
@@ -66,7 +75,7 @@ return [
             'language' => '*',
             'action'  => function() {
                 $kirby = kirby();
-                $content = snippet('logout', compact('kirby'), true);
+                $content = snippet('api/logout', compact('kirby'), true);
                 return new Kirby\Cms\Response($content, 'text/html');
             }
         ]

@@ -1,7 +1,6 @@
 <?php 
     $activities = $page->children()->template('activity');
 ?>
-
 <?php snippet('document', slots: true) ?>
 <?php slot() ?>
 <section>
@@ -15,5 +14,6 @@
         <?php endforeach ?>
     </ul>
 </section>
+<?= snippet('queue') ?>
 <?php endslot() ?>
 <?php endsnippet() ?>

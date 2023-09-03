@@ -26,6 +26,5 @@ $journals = $site->index()->filter(function($a) use($user) {
     </ul>    
 </section>
 
-
 <?php endslot() ?>
 <?php endsnippet() ?>
