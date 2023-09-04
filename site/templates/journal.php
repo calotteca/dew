@@ -18,12 +18,13 @@
 </section>
 
 <section id="feed">
-    <ul hx-get="/<?= $lg ?>/ended/journal:<?= base64_encode($page->uuid()) ?>" hx-trigger="every 1s"></ul>
+    <h2>Feed</h2>
+    <ul hx-get="/<?= $lg ?>/ended/journal:<?= base64_encode($page->uuid()) ?>" hx-trigger="load, update from:body"></ul>
 </section>
 
 <section id="queue">
-    <h2>queue</h2>
-    <div hx-get="/<?= $lg ?>/queue/journal:<?= base64_encode($page->uuid()) ?>" hx-trigger="every 1s"></div>
+    <h2>Queue</h2>
+    <div hx-get="/<?= $lg ?>/queue/journal:<?= base64_encode($page->uuid()) ?>" hx-trigger="load, update from:body"></div>
 </section>
 
 <?php endslot() ?>

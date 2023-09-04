@@ -10,9 +10,9 @@
         return $activity->endDate()->isNotEmpty();
     });
     $activities = $activities->sortBy('startDate', 'desc');
-    $activities = $activities->paginate(12);
+    $activities = $activities->paginate(6);
 ?>
 
 <?php foreach ($activities as $activity) : ?>
-<li><?= $activity->key() . ' : ' .  $activity->startDate() ?></li>
+<li><?= $activity->key() . ' - ' .  $activity->startDate() . ' to ' . $activity->endDate() ?></li>
 <?php endforeach ?>

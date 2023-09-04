@@ -9,28 +9,27 @@ button:hover {
     outline: 4px solid peachpuff;
 }
 
-#activities {
-    margin-top: 1rem;
+h2 {
+    font-size: x-large;
+}
+
+#view {
+    max-width: 30rem;
+    margin: 0 auto;
+}
+
+#view ul {
+    gap: 0.5rem;
 }
 
 #activities ul {
     display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    max-width: 30rem;
-    gap: 0.5rem;
-    margin: 0 auto;
+
 }
 
-#feed {
+section {
     margin-top: 1rem;
-}
-
-#feed ul {
-    display: flex;
-    flex-direction: column;
-    max-width: 30rem;
-    gap: 0.5rem;
-    margin: 0 auto;
-    list-style: none;
+    border: 2px solid black;
+    padding: 1rem;
+    border-radius: 1rem;
 }

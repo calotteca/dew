@@ -55,7 +55,7 @@ return [
             'action'  => function() {
                 $kirby = kirby();
                 $content = snippet('api/start', compact('kirby'), true);
-                return new Kirby\Cms\Response($content, 'text/html');
+                return new Kirby\Cms\Response($content, 'text/html', 200, ['HX-Trigger'=>'update']);
             }
         ],
         [
@@ -64,7 +64,7 @@ return [
             'action'  => function() {
                 $kirby = kirby();
                 $content = snippet('api/end', compact('kirby'), true);
-                return new Kirby\Cms\Response($content, 'text/html');
+                return new Kirby\Cms\Response($content, 'text/html', 200, ['HX-Trigger'=>'update']);
             }
         ],
         [
@@ -73,7 +73,7 @@ return [
             'action'  => function() {
                 $kirby = kirby();
                 $content = snippet('api/ended', compact('kirby'), true);
-                return new Kirby\Cms\Response($content, 'text/html');
+                return new Kirby\Cms\Response($content, 'text/html', 200,);
             }
         ],
         [
@@ -82,7 +82,7 @@ return [
             'action'  => function() {
                 $kirby = kirby();
                 $content = snippet('api/queue', compact('kirby'), true);
-                return new Kirby\Cms\Response($content, 'text/html');
+                return new Kirby\Cms\Response($content, 'text/html', 200);
             }
         ],
         [
