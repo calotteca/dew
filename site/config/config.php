@@ -59,11 +59,29 @@ return [
             }
         ],
         [
-            'pattern' => 'queue',
+            'pattern' => 'end',
             'language' => '*',
             'action'  => function() {
                 $kirby = kirby();
-                $content = snippet('api/queue', compact('kirby'), true);
+                $content = snippet('api/end', compact('kirby'), true);
+                return new Kirby\Cms\Response($content, 'text/html');
+            }
+        ],
+        [
+            'pattern' => 'ended',
+            'language' => '*',
+            'action'  => function() {
+                $kirby = kirby();
+                $content = snippet('api/ended', compact('kirby'), true);
+                return new Kirby\Cms\Response($content, 'text/html');
+            }
+        ],
+        [
+            'pattern' => 'started',
+            'language' => '*',
+            'action'  => function() {
+                $kirby = kirby();
+                $content = snippet('api/started', compact('kirby'), true);
                 return new Kirby\Cms\Response($content, 'text/html');
             }
         ],

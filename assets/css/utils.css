@@ -1,56 +1,14 @@
 /* Stuff */
-#view {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 100svh;
-    justify-content: center;
-    margin: 0 0.5rem;
-    width: 100%;
-}
-
-.ctn {
-    margin: 0 auto;
-    padding: 0 var(--gutter);
-    max-width: var(--site);
-}
 
 h1 {
     font-size: x-large;
 }
 
-.disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
+h2 {
+    font-size: large;
 }
 
-
-
-section h1 {
-    font-size: xx-large;
-}
-
-section ul {
-    display: flex;
-    width: 30rem;
-    gap: 0.5rem;
-    flex-direction: column;
-}
-
-a,
 button {
-    width: 100%;
-    border: 2px solid black;
-    display: block;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    outline: 0px solid peachpuff;
-    transition: outline 0.2s;
-}
-
-a:not(.disabled):hover,
-a:not(.disabled):focus-visible,
-button:not(.disabled):hover,
-button:not(.disabled):focus-visible {
-    outline: 4px solid peachpuff;
+    padding: 0.5rem;
+    border: 1px dashed black;
 }
