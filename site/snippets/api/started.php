@@ -9,14 +9,14 @@ if ($journal->owner()->toUser()->has($user)) {
         return empty($activity->endDate()->value());
     });
 } else {
-    echo 'you do not own this journal';
+    retun;
 }
 ?>
 
 <ul>
     <?php foreach ($activities as $activity) : ?>
     <li>
-        <?= $activity->startDate()->toDate('HH:mm dd/MM/YYYY') ?>
+        <?= $activity->startDate()->toDate('HH:mm:ss dd/MM/YYYY') ?>
         <button hx-get="/<?= $lg ?>/end/journal:<?= base64_encode($journal->uuid()) ?>/activity:<?= base64_encode($activity->uuid()) ?>">[end]</button>
     </li>
     <?php endforeach ?>    

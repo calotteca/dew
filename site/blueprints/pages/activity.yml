@@ -8,11 +8,19 @@ tabs:
         fields:
           startDate:
             type: date
-            time: true
+            time:
+              step:
+                unit: second
+                size: 1
+              display: 'HH:mm:ss'
             width: 1/2
           endDate: 
             type: date
-            time: true
+            time:
+              step:
+                unit: second
+                size: 1
+              display: 'HH:mm:ss'
             width: 1/2
           key: 
             type: text
