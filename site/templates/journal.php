@@ -19,12 +19,12 @@
 
 <section id="feed">
     <h2>Feed</h2>
-    <ul hx-get="/<?= $lg ?>/ended/journal:<?= base64_encode($page->uuid()) ?>" hx-trigger="load, update from:body"></ul>
+    <ul hx-get="/<?= $lg ?>/ended/journal:<?= base64_encode($page->uuid()) ?>" hx-trigger="load, tik from:body"></ul>
 </section>
 
 <section id="queue">
     <h2>Queue</h2>
-    <div hx-get="/<?= $lg ?>/queue/journal:<?= base64_encode($page->uuid()) ?>" hx-trigger="load, update from:body"></div>
+    <div hx-get="/<?= $lg ?>/queue/journal:<?= base64_encode($page->uuid()) ?>" hx-trigger="load, tik from:body"></div>
 </section>
 
 <?php endslot() ?>

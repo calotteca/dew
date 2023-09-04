@@ -55,7 +55,8 @@ return [
             'action'  => function() {
                 $kirby = kirby();
                 $content = snippet('api/start', compact('kirby'), true);
-                return new Kirby\Cms\Response($content, 'text/html', 200, ['HX-Trigger'=>'update']);
+                return new Kirby\Cms\Response($content, 'text/html');
+
             }
         ],
         [
@@ -64,7 +65,7 @@ return [
             'action'  => function() {
                 $kirby = kirby();
                 $content = snippet('api/end', compact('kirby'), true);
-                return new Kirby\Cms\Response($content, 'text/html', 200, ['HX-Trigger'=>'update']);
+                return new Kirby\Cms\Response($content, 'text/html');
             }
         ],
         [

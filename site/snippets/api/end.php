@@ -1,4 +1,5 @@
 <?php
+    header('HX-Trigger: tik');
     $user = $kirby->user();
     $journal = $kirby->page(base64_decode(param('journal')));
     $activity = $journal->find(base64_decode(param('activity')));
