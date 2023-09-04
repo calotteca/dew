@@ -1,6 +1,7 @@
 <?php
     $user = $kirby->user();
     $journal = $kirby->page(base64_decode(param('journal')));
+    $key = base64_decode(param('key'));
     $kirby->impersonate('kirby');
     if ($journal->owner()->toUser()->has($user)) {
         $activity = $journal->createChild(
@@ -9,11 +10,10 @@
                 'template'  => 'activity',
                 'isDraft'   => false,
                 'content'   => [
-                    'key'       => 'demo',
+                    'key'       => $key,
                     'startDate' => date("Y-m-d H:i:s")
                 ]
             ]
         );
     }
-    echo 'Start activity';
 ?>

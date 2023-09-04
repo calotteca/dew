@@ -77,11 +77,11 @@ return [
             }
         ],
         [
-            'pattern' => 'started',
+            'pattern' => 'queue',
             'language' => '*',
             'action'  => function() {
                 $kirby = kirby();
-                $content = snippet('api/started', compact('kirby'), true);
+                $content = snippet('api/queue', compact('kirby'), true);
                 return new Kirby\Cms\Response($content, 'text/html');
             }
         ],

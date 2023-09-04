@@ -1,14 +1,36 @@
-/* Stuff */
-
-h1 {
-    font-size: x-large;
-}
-
-h2 {
-    font-size: large;
-}
-
 button {
-    padding: 0.5rem;
-    border: 1px dashed black;
+    border-radius: 0.25rem;
+    border: 1px solid black;
+    outline: 0px solid peachpuff;
+    transition: outline 0.2s;
+}
+
+button:hover {
+    outline: 4px solid peachpuff;
+}
+
+#activities {
+    margin-top: 1rem;
+}
+
+#activities ul {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    max-width: 30rem;
+    gap: 0.5rem;
+    margin: 0 auto;
+}
+
+#feed {
+    margin-top: 1rem;
+}
+
+#feed ul {
+    display: flex;
+    flex-direction: column;
+    max-width: 30rem;
+    gap: 0.5rem;
+    margin: 0 auto;
+    list-style: none;
 }
