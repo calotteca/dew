@@ -26,10 +26,7 @@ return [
     ],
     'panel' => [
         'slug' => 'panel',
-        'language' => 'en',
-        'css' => 'assets/css/panel.css',
-        'js' => 'assets/js/panel.js',
-        'favicon' => 'assets/panel.ico',
+        'language' => 'en'
     ],
     'thumbs' => [
         'srcsets' => [
@@ -67,6 +64,15 @@ return [
             'action'  => function() {
                 $kirby = kirby();
                 $content = snippet('api/queue', compact('kirby'), true);
+                return new Kirby\Cms\Response($content, 'text/html');
+            }
+        ],
+        [
+            'pattern' => 'lol',
+            'language' => '*',
+            'action'  => function() {
+                $kirby = kirby();
+                $content = snippet('api/lol', compact('kirby'), true);
                 return new Kirby\Cms\Response($content, 'text/html');
             }
         ],

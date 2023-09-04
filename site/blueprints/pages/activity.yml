@@ -6,11 +6,11 @@ tabs:
       activities:
         type: fields
         fields:
-          start:
+          startDate:
             type: date
             time: true
             width: 1/2
-          end: 
+          endDate: 
             type: date
             time: true
             width: 1/2
