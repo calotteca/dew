@@ -7,7 +7,8 @@
     if ($journal->owner()->toUser()->has($user)) {
         $activity = $activity->update(
             [
-                'endDate' => date("Y-m-d H:i:s")
+                'endDate' => date("Y-m-d H:i:s"),
+                'endedBy' => $user->id()
             ]
         );
     }
