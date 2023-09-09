@@ -3,11 +3,14 @@
 :root {
 	--gray-100: #F4F3F0;
 	--gray-150: #EDEDED;
+	--gray-175: #DEDEDE;
 	--gray-200: #8C8C8C;
 	--gray-300: #464646;
 	--gray-400: #262626;
 	--back: black;
 	--white: white;
+
+	background: var(--gray-100);
 }
 
 /* SPACINGS */

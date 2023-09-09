@@ -8,16 +8,18 @@ if ($journal->owner()->toUser()->has($user)) {
     $activities = $activities->filter(function ($activity) {
         return empty($activity->endDate()->value());
     });
+    $activities = $activities->sort('startDate', 'desc');
 } else {
     retun;
 }
 ?>
 
-<ul>
-    <?php foreach ($activities as $activity) : ?>
-    <li>
-        <?= $activity->startDate()->toDate('HH:mm:ss dd/MM/YYYY') ?>
-        <button hx-get="/<?= $lg ?>/end/journal:<?= base64_encode($journal->uuid()) ?>/activity:<?= base64_encode($activity->uuid()) ?>">[end]</button>
-    </li>
-    <?php endforeach ?>    
-</ul>
+<?php foreach ($activities as $activity) : ?>
+<queue-card data-ts="<?= strtotime($activity->startDate()) ?>">
+    <div class="symbol">🦜</div>
+    <div class="name"><?= $activity->key() ?></div>
+    <div class="dot"></div>
+    <div class="time">00:00</div>
+    <button hx-get="/<?= $lg ?>/end/journal:<?= base64_encode($journal->uuid()) ?>/activity:<?= base64_encode($activity->uuid()) ?>">[end]</button>
+</queue-card>
+<?php endforeach ?>    
