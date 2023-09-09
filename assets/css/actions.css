@@ -1,0 +1,8 @@
+#actions {
+    margin-top: 1rem;
+}
+
+#actions ul {
+    display: flex;
+    gap: 0.25rem;
+}

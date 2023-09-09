@@ -2,23 +2,21 @@
 <?php snippet('document', slots: true) ?>
 <?php slot() ?>
 
-<section id="activities">
-    <h2>Activities</h2>
+<section id="actions">
     <ul>
         <li>
-            <button hx-get="/<?= $lg ?>/start/journal:<?= base64_encode($page->uuid()) ?>/key:<?= base64_encode('feed') ?>" hx-swap="none">[Feed]</button>
+            <button class="action" hx-get="/<?= $lg ?>/start/journal:<?= base64_encode($page->uuid()) ?>/key:<?= base64_encode('feed') ?>" hx-swap="none">🍼</button>
         </li>
         <li>
-            <button hx-get="/<?= $lg ?>/start/journal:<?= base64_encode($page->uuid()) ?>/key:<?= base64_encode('sleep') ?>" hx-swap="none">[Sleep]</button>
+            <button class="action" hx-get="/<?= $lg ?>/start/journal:<?= base64_encode($page->uuid()) ?>/key:<?= base64_encode('sleep') ?>" hx-swap="none">💤</button>
         </li>
         <li>
-            <button hx-get="/<?= $lg ?>/start/journal:<?= base64_encode($page->uuid()) ?>/key:<?= base64_encode('play') ?>" hx-swap="none">[Play]</button>
+            <button class="action" hx-get="/<?= $lg ?>/start/journal:<?= base64_encode($page->uuid()) ?>/key:<?= base64_encode('play') ?>" hx-swap="none">🧸</button>
         </li>
     </ul>
 </section>
 
 <section id="feed">
-    <h2>Feed</h2>
     <ul hx-get="/<?= $lg ?>/ended/journal:<?= base64_encode($page->uuid()) ?>" hx-trigger="load, tik from:body"></ul>
 </section>
 

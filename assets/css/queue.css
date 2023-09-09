@@ -4,7 +4,7 @@
     right: 0;
     bottom: 0;
     border-radius: 0;
-    max-height: 38%;
+    max-height: 14rem;
     overflow-y: auto;
     border-top: 1px solid var(--gray-200);
     transition: height 0.2s;
@@ -19,9 +19,9 @@
 
 queue-card {
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 queue-card + queue-card {
@@ -39,11 +39,29 @@ queue-card .symbol {
     background: var(--gray-100);
 }
 
+queue-card .infos {
+    
+}
+
+queue-card .infos .key {}
+
+queue-card .infos .startedby {
+    margin-top: 0.25rem;
+    font-size: x-small;
+    color: var(--gray-300);
+    font-weight: 500;
+}
+
+queue-card .infos .startedby span {
+    color: var(--gray-200);
+}
+
+
 queue-card .dot {
     border-radius: 100%;
     width: 0.5rem;
     height: 0.5rem;
-    background: green;
+    background: var(--green);
     margin-left: auto;
 }
 
@@ -53,14 +71,3 @@ queue-card .time {
     font-weight: 500;
 }
 
-queue-card button {
-    border: 2px solid var(--gray-150);
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    background: white;
-    padding: 0.25rem;
-}

@@ -9,6 +9,7 @@
 	--gray-400: #262626;
 	--back: black;
 	--white: white;
+	--green: #51997D;
 
 	background: var(--gray-100);
 }

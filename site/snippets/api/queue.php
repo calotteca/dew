@@ -17,10 +17,16 @@ if ($journal->owner()->toUser()->has($user)) {
 <?php foreach ($activities as $activity) : ?>
 <queue-card data-ts="<?= strtotime($activity->startDate()) ?>">
     <div class="symbol">🦜</div>
-    <div class="name"><?= $activity->key() ?></div>
+    <div class="infos">
+        <div class="key"><?= t($activity->key()) ?></div>
+        <div class="startedby">
+            <span>Started by:</span>
+            <?= $activity->startedBy()->toUser()->nameOrEmail() ?>
+        </div>
+    </div>
     <div class="dot"></div>
     <div class="time">00:00</div>
-    <button hx-get="/<?= $lg ?>/end/journal:<?= base64_encode($journal->uuid()) ?>/activity:<?= base64_encode($activity->uuid()) ?>" hx-swap="none">
+    <button class="action" title="Stop" hx-get="/<?= $lg ?>/end/journal:<?= base64_encode($journal->uuid()) ?>/activity:<?= base64_encode($activity->uuid()) ?>" hx-swap="none">
         <img src="<?= asset('assets/svg/stop.svg')->url() ?>">
     </button>
 </queue-card>

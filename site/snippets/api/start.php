@@ -12,7 +12,8 @@
                 'isDraft'   => false,
                 'content'   => [
                     'key'       => $key,
-                    'startDate' => date("Y-m-d H:i:s")
+                    'startDate' => date("Y-m-d H:i:s"),
+                    'startedBy' => $user->id()
                 ]
             ]
         );

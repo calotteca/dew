@@ -11,6 +11,7 @@
 @import "indicator.css";
 @import "btn.css";
 @import "queue.css";
+@import "actions.css";
 
 /* VIEW */
 @import "default.css";
