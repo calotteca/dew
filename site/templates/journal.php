@@ -17,6 +17,11 @@
     </ul>
 </section>
 
+<section id="feed">
+    <h2>Feed</h2>
+    <ul hx-get="/<?= $lg ?>/ended/journal:<?= base64_encode($page->uuid()) ?>" hx-trigger="load, tik from:body"></ul>
+</section>
+
 <?= snippet('queue', ['journal' => base64_encode($page->uuid())]) ?>
 
 <?php endslot() ?>
