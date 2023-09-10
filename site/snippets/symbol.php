@@ -4,8 +4,17 @@
         case 'sleep':
             $symbol = '💤';
             break;
-        case 'feed':
+        case 'bottle':
             $symbol = '🍼';
+            break;
+        case 'left-breast':
+            $symbol = '⬅️';
+            break;
+        case 'right-breast':
+            $symbol = '➡️';
+            break;
+        case 'solid-food':
+            $symbol = '🍲';
             break;
         case 'play':
             $symbol = '🧸';

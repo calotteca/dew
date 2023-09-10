@@ -1,5 +1,5 @@
 <?php
-    header('HX-Trigger: tik');
+    header('HX-Trigger: queue');
     $user = $kirby->user();
     $journal = $kirby->page(base64_decode(param('journal')));
     $key = base64_decode(param('key'));

@@ -3,7 +3,7 @@
     <h2>Actions</h2>
     <ul>
         <li>
-            <button class="action" hx-get="/<?= $lg ?>/start/journal:<?= base64_encode($page->uuid()) ?>/key:<?= base64_encode('feed') ?>" hx-swap="none">🍼</button>
+            <a class="action" href="#feed">🍼</a>
         </li>
         <li>
             <button class="action" hx-get="/<?= $lg ?>/start/journal:<?= base64_encode($page->uuid()) ?>/key:<?= base64_encode('sleep') ?>" hx-swap="none">💤</button>

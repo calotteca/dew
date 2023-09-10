@@ -2,3 +2,9 @@
     max-width: 30rem;
     margin: 0 auto;
 }
+
+h2 {
+    font-size: large;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}

@@ -1,0 +1,28 @@
+activity-modal {
+    position: fixed;
+    inset: 0;
+    color: #f1f1f1;
+    background: var(--green);
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    z-index: 9000;
+}
+
+activity-modal[open] {
+    display: flex;
+}
+
+activity-modal .actions {
+    display: flex;
+    gap: 1rem;
+}
+
+activity-modal .close {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    color: #f1f1f1;
+}

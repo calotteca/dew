@@ -12,7 +12,10 @@
 @import "btn.css";
 @import "queue.css";
 @import "actions.css";
-@import "feed.css";
+@import "latest.css";
+
+/* MODAL */
+@import "activity-modal.css";
 
 /* VIEW */
 @import "default.css";

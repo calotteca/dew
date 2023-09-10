@@ -69,12 +69,12 @@ return [
             }
         ],
         [
-            'pattern' => 'feed',
+            'pattern' => 'latest',
             'language' => '*',
             'action'  => function() {
                 $kirby = kirby();
-                $content = snippet('api/feed', compact('kirby'), true);
-                return new Kirby\Cms\Response($content, 'text/html', 200,);
+                $content = snippet('api/latest', compact('kirby'), true);
+                return new Kirby\Cms\Response($content, 'text/html');
             }
         ],
         [
@@ -83,7 +83,7 @@ return [
             'action'  => function() {
                 $kirby = kirby();
                 $content = snippet('api/queue', compact('kirby'), true);
-                return new Kirby\Cms\Response($content, 'text/html', 200);
+                return new Kirby\Cms\Response($content, 'text/html');
             }
         ],
         [
