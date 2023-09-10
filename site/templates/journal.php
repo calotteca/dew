@@ -3,9 +3,8 @@
 <?php slot() ?>
 
 <?= snippet('actions') ?>
-<?= snippet('latest', ['journal' => base64_encode($page->uuid())]) ?>
 <?= snippet('queue', ['journal' => base64_encode($page->uuid())]) ?>
-
+<?= snippet('latest', ['journal' => base64_encode($page->uuid())]) ?>
 <?= snippet('feed') ?>
 
 <?php endslot() ?>

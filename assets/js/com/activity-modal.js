@@ -5,16 +5,36 @@ class ActivityModal extends HTMLElement {
 
 	connectedCallback() {
 
-        window.addEventListener("hashchange", (event) => {
-            if (location.hash.slice(1) === this.id) {
-                this.setAttribute("open", "");
-            }
-        })
+        if (location.hash.slice(1) === this.id) {
+            this.open();
+        }
 
-        this.querySelector(".close", (event) => {
-            this.removeAttribute("open")
-        })
+		window.addEventListener("hashchange", (event) => {
+			if (location.hash.slice(1) === this.id) {
+				this.open();
+			} else {
+				this.close();
+			}
+		});
+
+		this.querySelector(".close").addEventListener("click", (event) => {
+			this.close();
+		});
+
+		this.querySelectorAll(".action").forEach((el) => {
+			el.addEventListener("click", (event) => {
+				this.close();
+			});
+		});
+	}
+
+    open() {
+        this.setAttribute("open", "");
+    }
+
+	close() {
+		this.removeAttribute("open");
+		window.location.hash = "";
 	}
 }
 customElements.define("activity-modal", ActivityModal);
-d

@@ -19,7 +19,7 @@
         <?= snippet('symbol', ['key'=>$activity->key()]) ?>
     </div>
     <div class="infos">
-        <div class="key"><?= t($activity->key()) ?></div>
+        <div class="key"><?= $activity->key() ?></div>
         <div class="startedby">
             <span>Started by</span>
             <?= $activity->startedBy()->toUser()->nameOrEmail() ?>

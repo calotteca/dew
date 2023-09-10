@@ -8,3 +8,11 @@ h2 {
     font-weight: 500;
     margin-bottom: 0.5rem;
 }
+
+.noresult {
+    border: 2px dashed var(--gray-175);
+    color: var(--gray-200);
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0.5rem;
+}

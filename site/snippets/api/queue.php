@@ -13,7 +13,7 @@ if ($journal->owner()->toUser()->has($user)) {
     retun;
 }
 ?>
-
+<?php if ($activities->count() > 0) : ?>
 <?php foreach ($activities as $activity) : ?>
 <queue-card data-ts="<?= strtotime($activity->startDate()) ?>">
     <div class="symbol">
@@ -37,3 +37,6 @@ if ($journal->owner()->toUser()->has($user)) {
     </button>
 </queue-card>
 <?php endforeach ?>    
+<?php else: ?>
+<div class="noresult">Nothing yet</div>
+<?php endif ?>
