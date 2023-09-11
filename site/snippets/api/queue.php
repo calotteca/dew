@@ -38,5 +38,5 @@ if ($journal->owner()->toUser()->has($user)) {
 </queue-card>
 <?php endforeach ?>    
 <?php else: ?>
-<div class="noresult">Nothing yet</div>
+<div class="noresult">(ﾉ☉ヮ⚆)ﾉ ⌒*:･ﾟ✧</div>
 <?php endif ?>

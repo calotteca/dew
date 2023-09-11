@@ -21,6 +21,10 @@ class ActivityModal extends HTMLElement {
 			this.close();
 		});
 
+		this.querySelector(".veil").addEventListener("click", (event) => {
+			this.close();
+		});
+
 		this.querySelectorAll(".action").forEach((el) => {
 			el.addEventListener("click", (event) => {
 				this.close();
