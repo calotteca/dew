@@ -1,0 +1,59 @@
+#queue {
+	border-radius: 0;
+	overflow-y: auto;
+	z-index: 6000;
+	padding: 0 0.5rem;
+	margin-top: 1rem;
+}
+
+queue-card {
+	align-items: center;
+	display: flex;
+	gap: 0.5rem;
+}
+
+queue-card + queue-card {
+	margin-top: 0.5rem;
+}
+
+queue-card .symbol {
+	border: 2px solid var(--gray-150);
+	border-radius: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 3rem;
+	height: 3rem;
+	background: var(--gray-100);
+}
+
+queue-card .infos {
+}
+
+queue-card .infos .key {
+}
+
+queue-card .infos .startedby {
+	margin-top: 0.25rem;
+	font-size: x-small;
+	color: var(--gray-300);
+	font-weight: 500;
+}
+
+queue-card .infos .startedby span {
+	color: var(--gray-200);
+}
+
+queue-card .dot {
+	border-radius: 100%;
+	width: 0.5rem;
+	height: 0.5rem;
+	background: var(--green);
+	margin-left: auto;
+}
+
+queue-card .time {
+	font-feature-settings: "tnum" on, "lnum" on;
+	font-size: large;
+	font-weight: 500;
+}

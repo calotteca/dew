@@ -1,7 +1,21 @@
-/* Stuff */
-
-.ctn {
+#view {
+    max-width: 30rem;
     margin: 0 auto;
-    padding: 0 var(--gutter);
-    max-width: var(--site);
+}
+
+h2 {
+    font-size: large;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.noresult {
+    border: 2px dashed var(--gray-175);
+    color: var(--gray-200);
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: 0.5rem;
 }

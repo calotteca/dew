@@ -26,10 +26,7 @@ return [
     ],
     'panel' => [
         'slug' => 'panel',
-        'language' => 'en',
-        'css' => 'assets/css/panel.css',
-        'js' => 'assets/js/panel.js',
-        'favicon' => 'assets/panel.ico',
+        'language' => 'en'
     ],
     'thumbs' => [
         'srcsets' => [
@@ -53,27 +50,39 @@ return [
     ],
     'routes' => [
         [
-            'pattern' => 'sitemap.xml',
-            'language' => '*',
-            'action' => function () {
-                $kirby = kirby();
-                $content = snippet('sitemap', compact('kirby'), true);
-                return new Kirby\Cms\Response($content, 'application/xml');
-            }            
-        ],
-        [
-            'pattern' => 'sitemap',
+            'pattern' => 'start',
             'language' => '*',
             'action'  => function() {
-                return go('sitemap.xml', 301);
+                $kirby = kirby();
+                $content = snippet('api/start', compact('kirby'), true);
+                return new Kirby\Cms\Response($content, 'text/html');
+
             }
         ],
         [
-            'pattern' => 'search',
+            'pattern' => 'end',
             'language' => '*',
             'action'  => function() {
-                $site = site();
-                $content = snippet('site-search-results', compact('site'), true);
+                $kirby = kirby();
+                $content = snippet('api/end', compact('kirby'), true);
+                return new Kirby\Cms\Response($content, 'text/html');
+            }
+        ],
+        [
+            'pattern' => 'latest',
+            'language' => '*',
+            'action'  => function() {
+                $kirby = kirby();
+                $content = snippet('api/latest', compact('kirby'), true);
+                return new Kirby\Cms\Response($content, 'text/html');
+            }
+        ],
+        [
+            'pattern' => 'queue',
+            'language' => '*',
+            'action'  => function() {
+                $kirby = kirby();
+                $content = snippet('api/queue', compact('kirby'), true);
                 return new Kirby\Cms\Response($content, 'text/html');
             }
         ],
@@ -82,16 +91,7 @@ return [
             'language' => '*',
             'action'  => function() {
                 $kirby = kirby();
-                $content = snippet('logout', compact('kirby'), true);
-                return new Kirby\Cms\Response($content, 'text/html');
-            }
-        ],
-        [
-            'pattern' => 'like',
-            'language' => '*',
-            'action'  => function() {
-                $kirby = kirby();
-                $content = snippet('like', compact('kirby'), true);
+                $content = snippet('api/logout', compact('kirby'), true);
                 return new Kirby\Cms\Response($content, 'text/html');
             }
         ]

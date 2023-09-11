@@ -4,7 +4,7 @@
   "scripts": {
     "build": "npm run build:css && npm run build:js",
     "build:css": "postcss assets/css/index.css -o assets/css/app.css",
-    "build:js": "npm run purge:js && uglifyjs-folder assets/js/app -o assets/js/app.js && uglifyjs-folder assets/js/com -o assets/js/com.js && uglifyjs-folder assets/js/head -o assets/js/head.js",
+    "build:js": "npm run purge:js && uglifyjs-folder assets/js/app -o assets/js/app.js && uglifyjs-folder assets/js/com -o assets/js/com.js",
     "purge:css": "rm assets/css/app.css",
     "purge:js": "rm assets/js/app.js"
   },

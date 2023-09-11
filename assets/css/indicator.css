@@ -4,7 +4,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: var(--c-bg);
+	background: #313131;
 	opacity: 0;
 	visibility: hidden;
 	z-index: 9999;

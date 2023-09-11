@@ -1,0 +1,41 @@
+title: Activity
+tabs:
+
+  content:
+    sections:
+      activities:
+        type: fields
+        fields:
+          startDate:
+            type: date
+            time:
+              step:
+                unit: second
+                size: 1
+              display: 'HH:mm:ss'
+            width: 1/2
+          endDate: 
+            type: date
+            time:
+              step:
+                unit: second
+                size: 1
+              display: 'HH:mm:ss'
+            width: 1/2
+          key: 
+            type: text
+          startedBy:
+            type: users
+            multiple: false
+            width: 1/2
+          endedBy:
+            type: users
+            multiple: false
+            width: 1/2
+
+  advanced:
+    sections:
+      pages:
+        type: pages
+      files:
+        type: files

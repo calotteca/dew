@@ -1,0 +1,9 @@
+#actions {
+    margin-top: 1rem;
+    padding: 0 0.5rem;
+}
+
+#actions ul {
+    display: flex;
+    gap: 0.25rem;
+}
