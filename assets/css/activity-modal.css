@@ -12,44 +12,43 @@ activity-modal .veil {
     position: absolute;
     inset: 0;
     background: black;
-    opacity: 0.5;
+    opacity: 0;
+    animation: activity-modal-veil 0.2s forwards;
+}
+
+@keyframes activity-modal-veil {
+    to {
+        opacity: 0.5;
+    }
 }
 
 activity-modal .dialog {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: var(--gray-100);
+    top: 0;
+    background: white;
     flex-direction: column;
     display: flex;
     gap: 1rem;
     align-items: center;
     justify-content: center;
     z-index: 9000;
-    padding: 3rem 1rem;
-    border-radius: 1rem 1rem 0 0;
+    padding: 4rem 1rem;
+    border-radius: 0 0 1rem 1rem;
     overflow: hidden;
-    transform: translateY(1rem);
-    animation: activity-modal 0.4s forwards;
+    transform: translateY(-1rem);
+    animation: activity-modal 0.2s forwards;
+    box-shadow: 0px 5px 30px rgb(0 0 0 / 40%);
 }
 
 @keyframes activity-modal {
     from {
-        transform: translateY(1rem);
+        transform: translateY(-1rem);
     }
     to {
         transform: translateY(0)
     }
-}
-
-activity-modal .dialog::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0.2;
-    background: var(--green);
-    z-index: -1;
 }
 
 activity-modal .actions {

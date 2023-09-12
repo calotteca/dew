@@ -1,5 +1,8 @@
 <?php 
 $user = $kirby->user();
+if (!$user) {
+    go('/panel');
+}
 $journals = $site->index()->filter(function($a) use($user) {
     return $a->owner()->toUsers()->has($user);
 });
@@ -8,18 +11,18 @@ $journals = $site->index()->filter(function($a) use($user) {
 <?php snippet('document', slots: true) ?>
 <?php slot() ?>
 
-<section>
-    <h1>Journals</h1>
+<section class="home_journals">
+    <h2>Welcome back <?= $user->nameOrEmail() ?>!</h2>
     <ul>
         <?php foreach ($journals as $journal) : ?>
         <li>
-            <a class="journal" href="<?= $journal->url() ?>">
+            <a class="action journal" href="<?= $journal->url() ?>">
                 <?= $journal->title() ?>
             </a>
         </li>
         <?php endforeach ?>
         <li>
-            <a class="disabled">
+            <a class="action create not-allowed">
                 Create new
             </a>
         </li>
