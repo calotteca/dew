@@ -23,7 +23,7 @@ $journals = $site->index()->filter(function($a) use($user) {
         <?php endforeach ?>
         <li>
             <a class="action create not-allowed">
-                Create new
+                +
             </a>
         </li>
     </ul>    

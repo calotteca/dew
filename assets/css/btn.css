@@ -20,5 +20,5 @@
 }
 
 .action:not(.not-allowed):hover {
-    border-color: peru;
+    border-color: rgb(233, 178, 124);
 }
