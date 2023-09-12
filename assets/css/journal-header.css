@@ -1,0 +1,14 @@
+#journal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    font-size: small;
+    font-weight: 500;
+}
+
+#journal-header a {
+    padding: 4px 8px;
+    background: var(--gray-150);
+    border-radius: 4px;
+}
