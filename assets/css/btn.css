@@ -8,4 +8,17 @@
     height: 3rem;
     background: white;
     padding: 0.25rem;
+    transition: border 0.2s;
+}
+
+.action.not-allowed {
+    border-style: dashed;
+    border-color: var(--gray-175);
+    color: var(--gray-200);
+    background: transparent;
+    cursor: not-allowed;
+}
+
+.action:not(.not-allowed):hover {
+    border-color: peru;
 }

@@ -13,6 +13,13 @@ return [
         ]
     ],
     'debug'  => true,
+    'session' => [
+        'durationNormal' => 7200,            // 2 hours
+        'durationLong'   => 1209600,         // 2 weeks
+        'timeout'        => 1800,            // half an hour
+        'cookieName'     => 'dew_session',
+        'gcInterval'     => 100              // cleanup every ~100 requests
+    ],
     'email' => [
         'transport' => [
             'type' => 'smtp',

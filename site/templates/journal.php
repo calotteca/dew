@@ -1,4 +1,10 @@
-<?php $lg = $kirby->languageCode() ?? 'en' ?>
+<?php 
+    $lg = $kirby->languageCode() ?? 'en';
+    $user = $kirby->user();
+    if (!$user) {
+        go('/panel');
+}
+?>
 <?php snippet('document', slots: true) ?>
 <?php slot() ?>
 
