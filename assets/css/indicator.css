@@ -12,7 +12,9 @@
 
 .htmx-request .indicator,
 .htmx-swapping .indicator {
-	transition: all 0.2s 0.5s;
+	transition-property: visibility, opacity;
+	transition-duration: 0.2s;
+	transition-delay: 0.5s;
 	visibility: visible;
 	opacity: 0.8;
 }
