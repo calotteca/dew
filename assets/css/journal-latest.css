@@ -26,16 +26,6 @@
     align-items: center;
     display: flex;
     gap: 0.5rem;
-    animation: latest-li 0.5s forwards;
-}
-
-@keyframes latest-li {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(0);
-    }
 }
 
 #latest li .symbol {

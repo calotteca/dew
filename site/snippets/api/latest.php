@@ -10,9 +10,10 @@
         return $activity->endDate()->isNotEmpty();
     });
     $activities = $activities->sortBy('startDate', 'desc');
-    $activities = $activities->paginate(6);
+    $activities = $activities->paginate(3);
 ?>
 
+<?php if ($activities->count() > 0) : ?>
 <?php foreach ($activities as $activity) : ?>
 <li>
     <div class="symbol">
@@ -27,3 +28,6 @@
     </div>
 </li>
 <?php endforeach ?>
+<?php else: ?>
+<div class="noresult">(ﾉ☉ヮ⚆)ﾉ ⌒*:･ﾟ✧</div>
+<?php endif ?>

@@ -102,6 +102,15 @@ return [
             }
         ],
         [
+            'pattern' => 'today',
+            'language' => '*',
+            'action'  => function() {
+                $kirby = kirby();
+                $content = snippet('api/today', compact('kirby'), true);
+                return new Kirby\Cms\Response($content, 'text/html');
+            }
+        ],
+        [
             'pattern' => 'logout',
             'language' => '*',
             'action'  => function() {
