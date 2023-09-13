@@ -12,8 +12,9 @@
 @import "btn.css";
 @import "queue.css";
 @import "journal-header.css";
-@import "actions.css";
-@import "latest.css";
+@import "journal-actions.css";
+@import "journal-latest.css";
+@import "journal-today.css";
 @import "nutrition-modal.css";
 @import "newjournal-modal.css";
 

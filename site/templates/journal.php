@@ -1,5 +1,4 @@
 <?php 
-    $lg = $kirby->languageCode() ?? 'en';
     $user = $kirby->user();
     if (!$user) {
         go('/panel');
@@ -9,9 +8,11 @@
 <?php slot() ?>
 
 <?= snippet('journal-header') ?>
-<?= snippet('actions') ?>
-<?= snippet('queue', ['journal' => base64_encode($page->uuid())]) ?>
-<?= snippet('latest', ['journal' => base64_encode($page->uuid())]) ?>
+<?= snippet('journal-actions') ?>
+<?= snippet('journal-queue', ['journal' => base64_encode($page->uuid())]) ?>
+<?= snippet('journal-latest', ['journal' => base64_encode($page->uuid())]) ?>
+<?= snippet('journal-today', ['journal' => base64_encode($page->uuid())]) ?>
+
 <?= snippet('nutrition-modal') ?>
 
 <?php endslot() ?>
