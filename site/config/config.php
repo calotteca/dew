@@ -94,6 +94,14 @@ return [
             }
         ],
         [
+            'pattern' => 'newjournal',
+            'action'  => function() {
+                $kirby = kirby();
+                $content = snippet('api/newjournal', compact('kirby'), true);
+                return new Kirby\Cms\Response($content, 'text/html');
+            }
+        ],
+        [
             'pattern' => 'logout',
             'language' => '*',
             'action'  => function() {
