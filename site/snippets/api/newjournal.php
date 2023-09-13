@@ -1,7 +1,11 @@
 <?php
-    header('HX-Redirect: /');
     $name = get('name');
-    $slug = Str::slug($name . '-' . Str::random(6));
+    $slug = Str::slug(Str::random(8));
+    if ($kirby->site()->children()->findBy('slug', $slug)) {
+        header('HX-Redirect: /error');
+    } else {
+        header('HX-Redirect: /');
+    }
     $user = $kirby->user();
     $kirby->impersonate('kirby');
     $journal = $kirby->site()->createChild(
