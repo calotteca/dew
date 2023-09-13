@@ -1,28 +1,28 @@
-activity-modal {
+nutrition-modal {
     position: fixed;
     inset: 0;
     display: none;
 }
 
-activity-modal[open] {
+nutrition-modal[open] {
     display: block;
 }
 
-activity-modal .veil {
+nutrition-modal .veil {
     position: absolute;
     inset: 0;
     background: black;
     opacity: 0;
-    animation: activity-modal-veil 0.2s forwards;
+    animation: nutrition-modal-veil 0.2s forwards;
 }
 
-@keyframes activity-modal-veil {
+@keyframes nutrition-modal-veil {
     to {
         opacity: 0.5;
     }
 }
 
-activity-modal .dialog {
+nutrition-modal .dialog {
     position: fixed;
     left: 0;
     right: 0;
@@ -38,11 +38,11 @@ activity-modal .dialog {
     border-radius: 0 0 1rem 1rem;
     overflow: hidden;
     transform: translateY(-1rem);
-    animation: activity-modal 0.2s forwards;
+    animation: nutrition-modal 0.2s forwards;
     box-shadow: 0px 5px 30px rgb(0 0 0 / 40%);
 }
 
-@keyframes activity-modal {
+@keyframes nutrition-modal {
     from {
         transform: translateY(-1rem);
     }
@@ -51,12 +51,12 @@ activity-modal .dialog {
     }
 }
 
-activity-modal .actions {
+nutrition-modal .actions {
     display: flex;
     gap: 1rem;
 }
 
-activity-modal .close {
+nutrition-modal .close {
     position: absolute;
     top: 1rem;
     right: 1rem;

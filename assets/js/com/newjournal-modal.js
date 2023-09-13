@@ -1,18 +1,17 @@
-class ActivityModal extends HTMLElement {
+class NewJournalModal extends HTMLElement {
 	constructor() {
 		super();
 	}
 
 	connectedCallback() {
-
-        if (location.hash.slice(1) === this.id) {
-            this.open();
-        }
+		if (location.hash.slice(1) === this.id) {
+			this.open();
+		}
 
 		window.addEventListener("hashchange", (event) => {
 			if (location.hash.slice(1) === this.id) {
 				this.open();
-			} else {
+			} else if (event.oldURL === this.id) {
 				this.close();
 			}
 		});
@@ -24,21 +23,15 @@ class ActivityModal extends HTMLElement {
 		this.querySelector(".veil").addEventListener("click", (event) => {
 			this.close();
 		});
-
-		this.querySelectorAll(".action").forEach((el) => {
-			el.addEventListener("click", (event) => {
-				this.close();
-			});
-		});
 	}
 
-    open() {
-        this.setAttribute("open", "");
-    }
+	open() {
+		this.setAttribute("open", "");
+	}
 
 	close() {
 		this.removeAttribute("open");
 		window.location.hash = "";
 	}
 }
-customElements.define("activity-modal", ActivityModal);
+customElements.define("newjournal-modal", NewJournalModal);

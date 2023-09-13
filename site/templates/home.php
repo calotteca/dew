@@ -22,12 +22,14 @@ $journals = $site->index()->filter(function($a) use($user) {
         </li>
         <?php endforeach ?>
         <li>
-            <a class="action create not-allowed">
+            <a class="action create" href="#newjournal-modal">
                 +
             </a>
         </li>
     </ul>    
 </section>
+
+<?= snippet('newjournal-modal') ?>
 
 <?php endslot() ?>
 <?php endsnippet() ?>

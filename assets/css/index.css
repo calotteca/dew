@@ -14,9 +14,8 @@
 @import "journal-header.css";
 @import "actions.css";
 @import "latest.css";
-
-/* MODAL */
-@import "activity-modal.css";
+@import "nutrition-modal.css";
+@import "newjournal-modal.css";
 
 /* VIEW */
 @import "default.css";

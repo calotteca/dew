@@ -1,7 +1,7 @@
-<activity-modal id="nutrition-modal">
+<nutrition-modal id="nutrition-modal">
     <div class="veil"></div>
     <div class="dialog">
-        <h2>Feeding</h2>
+        <h2>Nutrition</h2>
         <ul class="actions">
             <li>
                 <button class="action" hx-get="/start/journal:<?= base64_encode($page->uuid()) ?>/key:<?= base64_encode('left-breast') ?>" hx-swap="none">⬅️</button>
@@ -18,4 +18,4 @@
         </ul>
         <button class="close">[close]</button>
     </div>
-</activity-modal>
+</nutrition-modal>
